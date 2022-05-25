@@ -1,13 +1,8 @@
 {
-  "name": "Contentful Gatsby Starter",
-  "description": "Gatsby starter for a Contentful project.",
-  "keywords": [
-    "contentful",
-    "gatsby",
-    "static",
-    "ssg"
-  ],
-  "repository": "https://github.com/contentful-userland/gatsby-contentful-starter",
+  "name": "Atlantis Granite & Marble LLC",
+  "description": "Your source for beautiful countertops.",
+  "keywords": ["contentful", "gatsby", "static", "ssg"],
+  "repository": "https://github.com/kevinnmurphy/atlantis",
   "success_url": "/",
   "buildpacks": [
     {
