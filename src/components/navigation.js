@@ -2,12 +2,14 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import * as styles from './navigation.module.css'
+import logo from '../../content/images/logo_navy_transparent.png'
 
 const Navigation = () => (
   <nav role="navigation" className={styles.container} aria-label="Main">
     <Link to="/" className={styles.logoLink}>
-      <span className={styles.logo} />
-      <span className={styles.navigationItem}>Atlantis Granite and Marble</span>
+      {/* <span className={styles.logo} /> */}
+      <img src={logo} alt="Logo" className={styles.logo}></img>
+      {/* <span className={styles.navigationItem}>Atlantis Granite and Marble</span> */}
     </Link>
 
     <ul className={styles.navigation}>

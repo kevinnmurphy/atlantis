@@ -4,25 +4,10 @@ import get from 'lodash/get'
 
 import Layout from '../components/layout'
 import Hero from '../components/hero'
+import Container from '../components/container'
 // import ArticlePreview from '../components/article-preview'
 
 const telephone = 'tel:+16782713409'
-
-const Text = () => (
-  <>
-    Clicks
-    <br />
-    <a href="#contact">Contact Form</a>
-    <br />
-    <a href="#business">business days/hours</a>
-    <br />
-    <a href="#gallery">Project Gallery</a>
-    <br />
-    <a href={telephone}>give us a call</a>
-    <br />
-    <br />
-  </>
-)
 
 const RootIndex = (props) => {
   console.log(props)
@@ -68,72 +53,71 @@ const RootIndex = (props) => {
         image={homePage?.heroImage?.gatsbyImageData}
         title={homePage?.title}
       />
+      <Container>
+        <div id="about">
+          <h3>{aboutPage?.title}</h3>
+          <h4>{aboutPage?.subtext}</h4>
+          <p>{aboutPage?.longText.longText}</p>
+          <div
+            // className="about-body"
+            dangerouslySetInnerHTML={{
+              __html: aboutPage?.longText.childMarkdownRemark.html,
+            }}
+          />
+        </div>
+        <div id="process">
+          <h3>{processPage?.title}</h3>
+          <h4>{processPage?.subtext}</h4>
+          <div
+            className="process-body"
+            dangerouslySetInnerHTML={{
+              __html: processPage?.longText.childMarkdownRemark.html,
+            }}
+          />
+        </div>
+        <div id="counters">
+          <h3>{counterPage?.title}</h3>
+          <h4>{counterPage?.subtext}</h4>
+          <div
+            className="counters-body"
+            dangerouslySetInnerHTML={{
+              __html: counterPage?.longText.childMarkdownRemark.html,
+            }}
+          />
+        </div>
+        <div id="gallery">
+          <h3>{galleryPage?.title}</h3>
+          <h4>{galleryPage?.subtext}</h4>
+          <div
+            className="gallery-body"
+            dangerouslySetInnerHTML={{
+              __html: galleryPage?.longText.childMarkdownRemark.html,
+            }}
+          />
+        </div>
+        <h4 id="contact">Contact Us</h4>
+        <h5>Fill out this form</h5>
+        <div id="faq">
+          <h3>{faqPage?.title}</h3>
+          <h4>{faqPage?.subtext}</h4>
+          <div
+            className="faqPage-body"
+            dangerouslySetInnerHTML={{
+              __html: faqPage?.longText.childMarkdownRemark.html,
+            }}
+          />
+        </div>
 
-      <Text />
-
-      <div id="about">
-        <h3>{aboutPage?.title}</h3>
-        <h4>{aboutPage?.subtext}</h4>
-        <p>{aboutPage?.longText.longText}</p>
-        <div
-          // className="about-body"
-          dangerouslySetInnerHTML={{
-            __html: aboutPage?.longText.childMarkdownRemark.html,
-          }}
-        />
-      </div>
-      <div id="process">
-        <h3>{processPage?.title}</h3>
-        <h4>{processPage?.subtext}</h4>
-        <div
-          className="process-body"
-          dangerouslySetInnerHTML={{
-            __html: processPage?.longText.childMarkdownRemark.html,
-          }}
-        />
-      </div>
-      <div id="counters">
-        <h3>{counterPage?.title}</h3>
-        <h4>{counterPage?.subtext}</h4>
-        <div
-          className="counters-body"
-          dangerouslySetInnerHTML={{
-            __html: counterPage?.longText.childMarkdownRemark.html,
-          }}
-        />
-      </div>
-      <div id="gallery">
-        <h3>{galleryPage?.title}</h3>
-        <h4>{galleryPage?.subtext}</h4>
-        <div
-          className="gallery-body"
-          dangerouslySetInnerHTML={{
-            __html: galleryPage?.longText.childMarkdownRemark.html,
-          }}
-        />
-      </div>
-      <h4 id="contact">Contact Us</h4>
-      <h5>Fill out this form</h5>
-      <div id="faq">
-        <h3>{faqPage?.title}</h3>
-        <h4>{faqPage?.subtext}</h4>
-        <div
-          className="faqPage-body"
-          dangerouslySetInnerHTML={{
-            __html: faqPage?.longText.childMarkdownRemark.html,
-          }}
-        />
-      </div>
-
-      <div id="business">
-        The Granite, Marble, and Quartz Specialists
-        <br />
-        <span>Working On A Home Project For 2022?</span>
-        <br />
-        <a href={telephone}>(678) 271-3409</a>
-        <br />
-        <a href="#contact">Request A Quote</a>
-      </div>
+        <div id="business">
+          The Granite, Marble, and Quartz Specialists
+          <br />
+          <span>Working On A Home Project For 2022?</span>
+          <br />
+          <a href={telephone}>(678) 271-3409</a>
+          <br />
+          <a href="#contact">Request A Quote</a>
+        </div>
+      </Container>
 
       {/* <ArticlePreview posts={posts} /> */}
     </Layout>

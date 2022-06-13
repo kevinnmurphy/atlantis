@@ -11,9 +11,18 @@ const Template = ({ children }) => {
   return (
     <>
       <Seo />
+      <div
+        style={{
+          backgroundColor: '#333333',
+          color: 'white',
+          minHeight: '4%',
+        }}
+      ></div>
       <Navigation />
       <main>{children}</main>
-      <Footer />
+      <div style={{ backgroundColor: '#333333', color: 'white' }}>
+        <Footer />
+      </div>
     </>
   )
 }
