@@ -41,14 +41,16 @@ module.exports = {
   },
   pathPrefix: '/atlantis',
   plugins: [
+    {
+      resolve: 'gatsby-source-contentful',
+      options: contentfulConfig,
+    },
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     'gatsby-plugin-image',
-    {
-      resolve: 'gatsby-source-contentful',
-      options: contentfulConfig,
-    },
+    `gatsby-theme-material-ui`,
+    // `gatsby-theme-portfolio-minimal`,
   ],
 }
