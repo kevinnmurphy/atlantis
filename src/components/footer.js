@@ -3,6 +3,8 @@ import React from 'react'
 import Container from './container'
 import * as styles from './footer.module.css'
 
+// import FacebookIcon from '@mui/icons-material/Facebook'
+
 const Footer = () => (
   <Container as="footer">
     <div className={styles.container}>
@@ -33,15 +35,15 @@ const Footer = () => (
           <span className="icon-facebook-round"></span>
         </a>
       </div>
-      <div className="footercredit">
+      <br />
+      <div className={styles.copyright}>
         <span>
           Copyright © 2022 Atlantis Granite &amp; Marble LLC, All rights
           reserved.
         </span>
       </div>
-      <p>Privacy Policy</p>
-      <p>Terms Of Service</p>
     </div>
+    {/* <FacebookIcon /> */}
   </Container>
 )
 

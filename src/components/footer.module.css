@@ -16,3 +16,7 @@
   border-bottom-color: var(--primary);
   color: var(--primary);
 }
+
+.copyright {
+  font-size: var(--text-xs);
+}

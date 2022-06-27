@@ -7,6 +7,57 @@ import Hero from '../components/hero'
 import Container from '../components/container'
 // import ArticlePreview from '../components/article-preview'
 
+// import * as React from 'react'
+import Box from '@mui/material/Box'
+import Switch from '@mui/material/Switch'
+import Paper from '@mui/material/Paper'
+import Grow from '@mui/material/Grow'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
+const icon = (
+  <Paper sx={{ m: 1 }} elevation={4}>
+    <Box component="svg" sx={{ width: 100, height: 100 }}>
+      <Box
+        component="polygon"
+        sx={{
+          fill: '#fff',
+          stroke: '#aaa',
+          strokeWidth: 1,
+        }}
+        points="0,100 50,00, 100,100"
+      />
+    </Box>
+  </Paper>
+)
+
+export function SimpleGrow() {
+  const [checked, setChecked] = React.useState(false)
+
+  const handleChange = () => {
+    setChecked((prev) => !prev)
+  }
+
+  return (
+    <Box sx={{ height: 180 }}>
+      <FormControlLabel
+        control={<Switch checked={checked} onChange={handleChange} />}
+        label="Show"
+      />
+      <Box sx={{ display: 'flex' }}>
+        <Grow in={checked}>{icon}</Grow>
+        {/* Conditionally applies the timeout prop to change the entry speed. */}
+        <Grow
+          in={checked}
+          style={{ transformOrigin: '0 0 0' }}
+          {...(checked ? { timeout: 500 } : {})}
+        >
+          {icon}
+        </Grow>
+      </Box>
+    </Box>
+  )
+}
+
 const telephone = 'tel:+16782713409'
 
 const RootIndex = (props) => {
@@ -22,10 +73,8 @@ const RootIndex = (props) => {
     setPosts(get(props, 'data.allContentfulBlogPost.nodes'))
   }, [posts, props])
 
-  console.log({ pages })
-
-  const find_by_id = (items, id) =>
-    items.find((item) => items.contentful_id === `${id}`)
+  // const find_by_id = (items, id) =>
+  //   items.find((item) => items.contentful_id === `${id}`)
 
   const homePage = pages.find(
     (page) => page.contentful_id === '3sYk6CmxQ4yh5XvYftb5of'
@@ -54,6 +103,7 @@ const RootIndex = (props) => {
         title={homePage?.title}
       />
       <Container>
+        {/* {SimpleGrow()} */}
         <div id="about">
           <h3>{aboutPage?.title}</h3>
           <h4>{aboutPage?.subtext}</h4>
