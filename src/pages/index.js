@@ -7,11 +7,13 @@ import Hero from '../components/hero'
 import Container from '../components/container'
 // import ArticlePreview from '../components/article-preview'
 
-// import * as React from 'react'
 import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
 import Switch from '@mui/material/Switch'
 import Paper from '@mui/material/Paper'
 import Grow from '@mui/material/Grow'
+
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 const icon = (
@@ -157,16 +159,38 @@ const RootIndex = (props) => {
             }}
           />
         </div>
-
-        <div id="business">
-          The Granite, Marble, and Quartz Specialists
+        <h4 id="location">Location</h4>
+        <Box
+          sx={{
+            boxShadow: 3,
+            maxHeight: 'fit-content',
+            maxWidth: 'fit-content',
+            padding: '8px',
+          }}
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.9127764584164!2d-84.2532796844194!3d33.94337143090631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5a0b851aa6841%3A0x69061a48f35c748d!2sAtlantis%20Granite%20%26%20Marble%20LLC!5e0!3m2!1sen!2sus!4v1656432789418!5m2!1sen!2sus"
+            width="600"
+            height="450"
+            style={{ border: '0' }}
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </Box>
+        <Divider sx={{ padding: '1em' }} />
+        <Box id="business" sx={{ textAlign: 'center', paddingTop: '1em' }}>
+          <Box sx={{ typography: 'h4' }}>
+            The Granite, Marble, and Quartz Specialists
+          </Box>
           <br />
+          <Box sx={{ typography: 'subtitle2' }}></Box>
           <span>Working On A Home Project For 2022?</span>
           <br />
           <a href={telephone}>(678) 271-3409</a>
           <br />
           <a href="#contact">Request A Quote</a>
-        </div>
+        </Box>
       </Container>
 
       {/* <ArticlePreview posts={posts} /> */}
