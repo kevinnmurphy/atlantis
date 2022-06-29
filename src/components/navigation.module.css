@@ -13,6 +13,8 @@
   list-style: none;
   margin: 0;
   gap: var(--space-xl);
+  padding-right: 3em;
+  font-size: 1.5em;
 }
 
 .navigationItem {
@@ -56,7 +58,9 @@
 }
 
 .logo {
-  height: 60px;
+  height: 71px;
+  width: 200px;
+  /* ratio .355 */
   display: block;
 }
 

@@ -4,31 +4,29 @@ import Container from './container'
 import * as styles from './footer.module.css'
 
 // import FacebookIcon from '@mui/icons-material/Facebook'
+import {
+  org,
+  street,
+  city,
+  telephone,
+  telephoneDisplay,
+  copyright,
+} from '../lib/info'
 
 const Footer = () => (
   <Container as="footer">
     <div className={styles.container}>
       <div className="v-card">
-        <div className="fn org">Atlantis Granite &amp; Marble LLC</div>
-        <div className="adr">
-          <span className="street-address">3280 Peachtree Corners Cir B</span>
-          <br />
-          <span className="locality">Peachtree Corners</span>,&nbsp;
-          <span className="region">GA</span>&nbsp;
-          <span className="postal-code">30092</span>
-        </div>
-        <a
-          className="phonelink tel"
-          // onclick="ga('send', 'event', 'Phone Call Click', 'click', 'Footer (678) 292-6600');"
-          href="tel:+16782713409"
-        >
-          <span className="icon-phone"></span>(678) 271-3409
+        <div className="org">{org}</div>
+        <div className="street">{street}</div>
+        <div className="city">{city}</div>
+        <a className="tel" href={telephone}>
+          {telephoneDisplay}
         </a>
       </div>
       <div className="socialbuttonspanel">
         <a
           className="socialbuttonslink"
-          // onclick="ga('send', 'event', 'Social Media Click', 'click', 'https://www.facebook.com/atlantisgranite/');"
           href="https://www.facebook.com/atlantisgranite/"
           target="_blank"
         >
@@ -37,10 +35,7 @@ const Footer = () => (
       </div>
       <br />
       <div className={styles.copyright}>
-        <span>
-          Copyright © 2022 Atlantis Granite &amp; Marble LLC, All rights
-          reserved.
-        </span>
+        <span>{copyright}</span>
       </div>
     </div>
     {/* <FacebookIcon /> */}

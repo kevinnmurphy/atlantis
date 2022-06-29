@@ -1,26 +1,90 @@
 import React from 'react'
+import { graphql } from 'gatsby'
+import get from 'lodash/get'
 
 import Layout from '../components/layout'
-import Hero from '../components/hero'
-import Seo from '../components/seo'
+import Container from '../components/container'
+
+import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
 
 const Contact = (props) => {
+  const [pages, setPages] = React.useState([])
+
+  React.useEffect(() => {
+    setPages(get(props, 'data.allContentfulPage.nodes'))
+  }, [pages, props])
+
+  const counterPage = pages.find(
+    (page) => page.contentful_id === '68SLKJVNYY8AFWAeUqxTIl'
+  )
+
   return (
     <Layout location={props.location}>
-      <Seo title="Contact" />
-      <Hero title="Contact" />
-      <p>Address Atlantis Granite & Marble LLC </p>
-      <p>3280 Peachtree Corners Cir B Peachtree Corners, GA 30092 </p>
-      <p>Come visit us online @ https://www.atlantisgm.com/</p>
-      <p>Accepted Payment Methods: Debit Card</p>
-      <p>
-        Business Hours: Monday 9:00 AM – 5:00 PM Tuesday 9:00 AM – 5:00 PM
-        Wednesday 9:00 AM – 5:00 PM Thursday 9:00 AM – 5:00 PM Friday 9:00 AM –
-        4:00 PM
-      </p>
-      <p>feature image</p>
+      <Container>
+        <Box id="counters">
+          <h3>{counterPage?.title}</h3>
+          <h4>{counterPage?.subtext}</h4>
+          <div
+            className="counters-body"
+            dangerouslySetInnerHTML={{
+              __html: counterPage?.longText.childMarkdownRemark.html,
+            }}
+          />
+        </Box>
+        <Box>FORM</Box>
+        <Box>IMAGE</Box>
+        <Box>{counterPage?.heroImage?.gatsbyImageData}</Box>
+      </Container>
+
+      {/* <ArticlePreview posts={posts} /> */}
     </Layout>
   )
 }
 
 export default Contact
+
+export const pageQuery = graphql`
+  query ContactQuery {
+    allContentfulPage(filter: { contentful_id: {} }) {
+      nodes {
+        contentful_id
+        title
+        subtext
+        longText {
+          childMarkdownRemark {
+            html
+          }
+        }
+        heroImage: mainImage {
+          gatsbyImageData(
+            layout: CONSTRAINED
+            placeholder: BLURRED
+            width: 1180
+          )
+        }
+      }
+    }
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+      nodes {
+        title
+        slug
+        publishDate(formatString: "MMMM Do, YYYY")
+        tags
+        heroImage {
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+            width: 424
+            height: 212
+          )
+        }
+        description {
+          childMarkdownRemark {
+            html
+          }
+        }
+      }
+    }
+  }
+`

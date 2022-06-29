@@ -8,13 +8,14 @@ import Container from '../components/container'
 // import ArticlePreview from '../components/article-preview'
 
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import Switch from '@mui/material/Switch'
 import Paper from '@mui/material/Paper'
 import Grow from '@mui/material/Grow'
 
 import FormControlLabel from '@mui/material/FormControlLabel'
+
+import { telephone, telephoneDisplay } from '../lib/info'
 
 const icon = (
   <Paper sx={{ m: 1 }} elevation={4}>
@@ -60,10 +61,8 @@ export function SimpleGrow() {
   )
 }
 
-const telephone = 'tel:+16782713409'
-
 const RootIndex = (props) => {
-  console.log(props)
+  // console.log(props)
   const [pages, setPages] = React.useState([])
   const [posts, setPosts] = React.useState([])
   // const [author, setAuthor] = React.useState([])
@@ -106,7 +105,7 @@ const RootIndex = (props) => {
       />
       <Container>
         {/* {SimpleGrow()} */}
-        <div id="about">
+        <Box id="about">
           <h3>{aboutPage?.title}</h3>
           <h4>{aboutPage?.subtext}</h4>
           <p>{aboutPage?.longText.longText}</p>
@@ -116,8 +115,8 @@ const RootIndex = (props) => {
               __html: aboutPage?.longText.childMarkdownRemark.html,
             }}
           />
-        </div>
-        <div id="process">
+        </Box>
+        <Box id="process" sx={{ textAlign: 'right' }}>
           <h3>{processPage?.title}</h3>
           <h4>{processPage?.subtext}</h4>
           <div
@@ -126,8 +125,8 @@ const RootIndex = (props) => {
               __html: processPage?.longText.childMarkdownRemark.html,
             }}
           />
-        </div>
-        <div id="counters">
+        </Box>
+        <Box id="counters">
           <h3>{counterPage?.title}</h3>
           <h4>{counterPage?.subtext}</h4>
           <div
@@ -136,8 +135,8 @@ const RootIndex = (props) => {
               __html: counterPage?.longText.childMarkdownRemark.html,
             }}
           />
-        </div>
-        <div id="gallery">
+        </Box>
+        <Box id="gallery">
           <h3>{galleryPage?.title}</h3>
           <h4>{galleryPage?.subtext}</h4>
           <div
@@ -146,10 +145,12 @@ const RootIndex = (props) => {
               __html: galleryPage?.longText.childMarkdownRemark.html,
             }}
           />
-        </div>
-        <h4 id="contact">Contact Us</h4>
-        <h5>Fill out this form</h5>
-        <div id="faq">
+        </Box>
+        <Box>
+          <h4 id="contact">Contact Us</h4>
+          <h5>Fill out this form</h5>
+        </Box>
+        <Box id="faq">
           <h3>{faqPage?.title}</h3>
           <h4>{faqPage?.subtext}</h4>
           <div
@@ -158,25 +159,29 @@ const RootIndex = (props) => {
               __html: faqPage?.longText.childMarkdownRemark.html,
             }}
           />
-        </div>
-        <h4 id="location">Location</h4>
-        <Box
-          sx={{
-            boxShadow: 3,
-            maxHeight: 'fit-content',
-            maxWidth: 'fit-content',
-            padding: '8px',
-          }}
-        >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.9127764584164!2d-84.2532796844194!3d33.94337143090631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5a0b851aa6841%3A0x69061a48f35c748d!2sAtlantis%20Granite%20%26%20Marble%20LLC!5e0!3m2!1sen!2sus!4v1656432789418!5m2!1sen!2sus"
-            width="600"
-            height="450"
-            style={{ border: '0' }}
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+        </Box>
+        <Box>
+          <h4 id="location">Location</h4>
+          <Box
+            className="map"
+            sx={{
+              boxShadow: 3,
+              maxHeight: 'fit-content',
+              maxWidth: 'fit-content',
+              padding: '8px',
+              display: 'flex',
+            }}
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.9127764584164!2d-84.2532796844194!3d33.94337143090631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5a0b851aa6841%3A0x69061a48f35c748d!2sAtlantis%20Granite%20%26%20Marble%20LLC!5e0!3m2!1sen!2sus!4v1656432789418!5m2!1sen!2sus"
+              width="600"
+              height="450"
+              style={{ border: '0' }}
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </Box>
         </Box>
         <Divider sx={{ padding: '1em' }} />
         <Box id="business" sx={{ textAlign: 'center', paddingTop: '1em' }}>
@@ -184,12 +189,15 @@ const RootIndex = (props) => {
             The Granite, Marble, and Quartz Specialists
           </Box>
           <br />
-          <Box sx={{ typography: 'subtitle2' }}></Box>
-          <span>Working On A Home Project For 2022?</span>
-          <br />
-          <a href={telephone}>(678) 271-3409</a>
-          <br />
-          <a href="#contact">Request A Quote</a>
+          <Box sx={{ typography: 'h5' }}>
+            Working On A Home Project For 2022?
+          </Box>
+          <Box>
+            <a href={telephone}>{telephoneDisplay}</a>
+          </Box>
+          <Box sx={{ fontWeight: '500' }}>
+            <a href="#contact">Request A Quote</a>
+          </Box>
         </Box>
       </Container>
 

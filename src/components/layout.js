@@ -11,61 +11,50 @@ import IconButton from '@mui/material/IconButton'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import InstagramIcon from '@mui/icons-material/Instagram'
 
-const Topper = () => (
-  <address
-    class="businessnapsingleline header-address"
-    style={{
-      display: 'flex',
-      justifyContent: 'space-evenly',
-      alignItems: 'center',
-    }}
-  >
-    <div class="v-card">
-      <span class="org">Atlantis Granite &amp; Marble LLC</span>
-      <span class="adr">
-        <span class="separator"> | </span>
-        <span class="icon-map-marker"></span>
-        <span class="street-address">3280 Peachtree Corners Cir B</span>
-        <span class="locality">Peachtree Corners</span>
-        <span class="region">GA</span>
-        <span class="postal-code">30092</span>
-      </span>
+import { org, address, telephone, telephoneDisplay } from '../lib/info'
 
-      <span>
+const Topper = () => {
+  return (
+    <address
+      class="businessnapsingleline header-address"
+      style={{
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+      }}
+    >
+      <div class="v-card">
+        <span class="org">{org}</span>
         <span class="separator"> | </span>
-        <span class="icon-phone"></span>
-        <a
-          id="ctl22_hlPhoneLink"
-          class="phonelink tel"
-          onclick="ga('send', 'event', 'Local Phone Button', 'click');"
-          href="tel:+16782713409"
-        >
-          (678) 271-3409
+        <a class="address" href="https://goo.gl/maps/6SVt9jWawSSE1YK87">
+          {address}
         </a>
-      </span>
-    </div>
-    <div>
-      <IconButton
-        // color="primary"\
-        sx={{ color: 'white' }}
-        href="https://www.facebook.com/atlantisgranite/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FacebookIcon />
-      </IconButton>
-      <IconButton
-        // color="primary"
-        sx={{ color: 'white' }}
-        href="https://www.instagram.com/atlantis_gm/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <InstagramIcon />
-      </IconButton>
-    </div>
-  </address>
-)
+        <span class="separator"> | </span>
+        <a href={telephone}>{telephoneDisplay}</a>
+      </div>
+      <div>
+        <IconButton
+          // color="primary"\
+          sx={{ color: 'white' }}
+          href="https://www.facebook.com/atlantisgranite/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FacebookIcon />
+        </IconButton>
+        <IconButton
+          // color="primary"
+          sx={{ color: 'white' }}
+          href="https://www.instagram.com/atlantis_gm/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <InstagramIcon />
+        </IconButton>
+      </div>
+    </address>
+  )
+}
 
 const Template = ({ children }) => {
   return (
