@@ -51,7 +51,9 @@ export default function useOnScreen(ref, rootMargin = '0px') {
       observer.observe(ref.current)
     }
     return () => {
-      observer.unobserve(ref.current)
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
     }
   }, []) // Empty array ensures that effect is only run on mount and unmount
   return isIntersecting

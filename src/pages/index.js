@@ -15,7 +15,12 @@ import Switch from '@mui/material/Switch'
 import Paper from '@mui/material/Paper'
 import Grow from '@mui/material/Grow'
 
-import FormControlLabel from '@mui/material/FormControlLabel'
+import Accordion from '@mui/material/Accordion'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import AccordionDetails from '@mui/material/AccordionDetails'
+import Typography from '@mui/material/Typography'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { styled } from '@mui/system'
 
 import { telephone, telephoneDisplay } from '../lib/info'
 
@@ -32,42 +37,22 @@ import swiperCss from '../components/swiper.css'
 
 import useOnScreen from '../hooks/useOnScreen'
 
-const icon = (
-  <Paper sx={{ m: 1 }} elevation={4}>
-    <Box component="svg" sx={{ width: 100, height: 100 }}>
-      <Box
-        component="polygon"
-        sx={{
-          fill: '#fff',
-          stroke: '#aaa',
-          strokeWidth: 1,
-        }}
-        points="0,100 50,00, 100,100"
-      />
-    </Box>
-  </Paper>
-)
+const StyledPaper = styled(Paper)((props) => ({
+  backgroundColor: '#e9f0ff',
+  color: '#656c81',
+  padding: '1.5em 3em 1.5em 3em',
+}))
 
 const SimpleGrow = ({ children }) => {
   const ref = useRef()
-  const onScreen = useOnScreen(ref, '-100px')
-
-  const [checked, setChecked] = React.useState(false)
-
-  const handleChange = () => {
-    setChecked((prev) => !prev)
-  }
-
-  React.useEffect(() => {
-    if (onScreen) setChecked(true)
-  }, [onScreen])
+  const onScreen = useOnScreen(ref, '-50px')
 
   return (
     <Box ref={ref}>
       <Grow
-        in={checked}
+        in={onScreen}
         style={{ transformOrigin: '0 0 0' }}
-        {...(checked ? { timeout: 500 } : {})}
+        {...(onScreen ? { timeout: 500 } : {})}
       >
         {children}
       </Grow>
@@ -133,28 +118,21 @@ const RootIndex = (props) => {
           </Box>
         </SimpleGrow>
         <SimpleGrow>
-          <Box
-            id="process"
-            sx={{
-              backgroundColor: '#e9f0ff',
-              width: '110%',
-              color: '#656c81',
-              marginLeft: '-5%',
-              padding: '1.5em 3em 1.5em 3em',
-            }}
-          >
-            <h3>{processPage?.title}</h3>
-            <h4>{processPage?.subtext}</h4>
-            <div
-              className="process-body"
-              dangerouslySetInnerHTML={{
-                __html: processPage?.longText.childMarkdownRemark.html,
-              }}
-            />
-          </Box>
+          <StyledPaper>
+            <Box id="process">
+              <h3>{processPage?.title}</h3>
+              <h4>{processPage?.subtext}</h4>
+              <div
+                className="process-body"
+                dangerouslySetInnerHTML={{
+                  __html: processPage?.longText.childMarkdownRemark.html,
+                }}
+              />
+            </Box>
+          </StyledPaper>
         </SimpleGrow>
         <SimpleGrow>
-          <Box id="counters">
+          <Box id="counters" sx={{ textAlign: 'center' }}>
             <h3>{counterPage?.title}</h3>
             <h4>{counterPage?.subtext}</h4>
             <div
@@ -166,20 +144,26 @@ const RootIndex = (props) => {
           </Box>
         </SimpleGrow>
         <SimpleGrow>
-          <Box id="gallery" sx={{ textAlign: 'center' }}>
-            <h3>{galleryPage?.title}</h3>
-            <h4>{galleryPage?.subtext}</h4>
-            <div
-              className="gallery-body"
-              dangerouslySetInnerHTML={{
-                __html: galleryPage?.longText.childMarkdownRemark.html,
-              }}
-            />
-            <Box>
+          <Box id="gallery">
+            <StyledPaper>
+              <h3>{galleryPage?.title}</h3>
+              <h4>{galleryPage?.subtext}</h4>
+              <div
+                className="gallery-body"
+                dangerouslySetInnerHTML={{
+                  __html: galleryPage?.longText.childMarkdownRemark.html,
+                }}
+              />
+            </StyledPaper>
+            <Box sx={{ paddingTop: '0.5em' }}>
               <Swiper>
                 {galleryPage?.imageGallery.map(({ gatsbyImageData }) => (
                   <SwiperSlide className={swiperCss}>
-                    <GatsbyImage alt={'title'} image={gatsbyImageData} />
+                    <GatsbyImage
+                      className={swiperCss}
+                      alt={'title'}
+                      image={gatsbyImageData}
+                    />
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -194,14 +178,32 @@ const RootIndex = (props) => {
         </SimpleGrow>
         <SimpleGrow>
           <Box id="faq">
-            <h3>{faqPage?.title}</h3>
-            <h4>{faqPage?.subtext}</h4>
-            <div
-              className="faqPage-body"
-              dangerouslySetInnerHTML={{
-                __html: faqPage?.longText.childMarkdownRemark.html,
+            <Accordion
+              sx={{
+                // backgroundColor: '#e9f0ff',
+                boxShadow: 'none',
+                color: '#656c81',
               }}
-            />
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <h3>{faqPage?.title}</h3>
+                <h4>{faqPage?.subtext}</h4>
+              </AccordionSummary>
+              <AccordionDetails sx={{ padding: '0 2em 1em 2em' }}>
+                <StyledPaper>
+                  <div
+                    className="faqPage-body"
+                    dangerouslySetInnerHTML={{
+                      __html: faqPage?.longText.childMarkdownRemark.html,
+                    }}
+                  />
+                </StyledPaper>
+              </AccordionDetails>
+            </Accordion>
           </Box>
         </SimpleGrow>
         <Divider sx={{ padding: '1em' }} />

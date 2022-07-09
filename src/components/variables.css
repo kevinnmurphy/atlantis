@@ -58,7 +58,8 @@
 
   /* text */
   /* color */
-  --text-color: var(--black);
+  /* --text-color: var(--black); */
+  --text-color: #444444;
   /* size */
   --text-lead: var(--text-lg);
   --text-prose: var(--text-md);
