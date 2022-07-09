@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
-// Usage
+import React, { useState, useEffect, useRef } from 'react'
+
+//Example
 function App() {
   // Ref for the element that we want to detect whether on screen
   const ref = useRef()
@@ -31,8 +32,9 @@ function App() {
     </div>
   )
 }
+
 // Hook
-function useOnScreen(ref, rootMargin = '0px') {
+export default function useOnScreen(ref, rootMargin = '0px') {
   // State and setter for storing whether element is visible
   const [isIntersecting, setIntersecting] = useState(false)
   useEffect(() => {

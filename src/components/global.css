@@ -99,3 +99,8 @@ pre,
 code {
   font-family: var(--font-monospace);
 }
+
+.gatsby-image-wrapper {
+  position: static;
+  overflow: hidden;
+}

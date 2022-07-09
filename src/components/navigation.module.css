@@ -1,11 +1,11 @@
 .container {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   /* max-width: var(--size-max-width); */
   align-items: center;
   margin: 0 auto;
   padding: var(--space-2xl) var(--size-gutter);
-  border-bottom: 4px solid #372f60;
 }
 
 .navigation {
@@ -13,7 +13,6 @@
   list-style: none;
   margin: 0;
   gap: var(--space-xl);
-  padding-right: 3em;
   font-size: 1.5em;
 }
 
@@ -41,6 +40,21 @@
   flex-direction: row;
   flex-shrink: 0;
   gap: var(--space-md);
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 108px;
+    margin-bottom: 1em;
+  }
+  .container {
+    text-align: center;
+    flex-direction: column;
+  }
+  .navigation {
+    padding: 0;
+    margin-top: 1em;
+  }
 }
 
 @media (max-width: 767px) {

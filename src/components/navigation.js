@@ -14,7 +14,7 @@ const Navigation = () => (
       {/* <span className={styles.navigationItem}>Atlantis Granite and Marble</span> */}
     </Link>
 
-    <Box sx={{ typography: 'h5' }}>Atlanta’s Trusted Countertop Experts</Box>
+    <Box sx={{ typography: 'h6' }}>Atlanta’s Trusted Countertop Experts</Box>
 
     <ul className={styles.navigation}>
       <li className={styles.navigationItem}>
@@ -29,7 +29,7 @@ const Navigation = () => (
       </li>
       <li className={styles.navigationItem}>
         <Link to="/projects/" activeClassName="active">
-          Project Gallery
+          Gallery
         </Link>
       </li>
       <li className={styles.navigationItem}>
