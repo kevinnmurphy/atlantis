@@ -29,6 +29,7 @@ const Footer = () => (
           className="socialbuttonslink"
           href="https://www.facebook.com/atlantisgranite/"
           target="_blank"
+          rel="noreferrer"
         >
           <span className="icon-facebook-round"></span>
         </a>

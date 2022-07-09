@@ -16,20 +16,20 @@ import { org, address, telephone, telephoneDisplay } from '../lib/info'
 const Topper = () => {
   return (
     <address
-      class="businessnapsingleline header-address"
+      className="businessnapsingleline header-address"
       style={{
         display: 'flex',
         justifyContent: 'space-evenly',
         alignItems: 'center',
       }}
     >
-      <div class="v-card">
-        <span class="org">{org}</span>
-        <span class="separator"> | </span>
-        <a class="address" href="https://goo.gl/maps/6SVt9jWawSSE1YK87">
+      <div className="v-card">
+        <span className="org">{org}</span>
+        <span className="separator"> | </span>
+        <a className="address" href="https://goo.gl/maps/6SVt9jWawSSE1YK87">
           {address}
         </a>
-        <span class="separator"> | </span>
+        <span className="separator"> | </span>
         <a href={telephone}>{telephoneDisplay}</a>
       </div>
       <div>

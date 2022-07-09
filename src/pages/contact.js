@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import Container from '../components/container'
 
 import Box from '@mui/material/Box'
-import Divider from '@mui/material/Divider'
+// import Divider from '@mui/material/Divider'
 
 const Contact = (props) => {
   const [pages, setPages] = React.useState([])

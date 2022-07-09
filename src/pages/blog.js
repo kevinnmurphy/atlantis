@@ -12,7 +12,7 @@ const BlogIndex = (props) => {
 
   React.useEffect(() => {
     setPosts(get(props, 'data.allContentfulBlogPost.nodes'))
-  }, [])
+  }, [props])
 
   return (
     <Layout location={props.location}>

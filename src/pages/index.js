@@ -11,14 +11,14 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
-import Switch from '@mui/material/Switch'
+// import Switch from '@mui/material/Switch'
 import Paper from '@mui/material/Paper'
 import Grow from '@mui/material/Grow'
 
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
-import Typography from '@mui/material/Typography'
+// import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { styled } from '@mui/system'
 
@@ -63,16 +63,16 @@ const SimpleGrow = ({ children }) => {
 const RootIndex = (props) => {
   // console.log(props)
   const [pages, setPages] = React.useState([])
-  const [posts, setPosts] = React.useState([])
+  // const [posts, setPosts] = React.useState([])
   // const [author, setAuthor] = React.useState([])
   console.log(pages)
 
   React.useEffect(() => {
     setPages(get(props, 'data.allContentfulPage.nodes'))
-  }, [pages, props])
-  React.useEffect(() => {
-    setPosts(get(props, 'data.allContentfulBlogPost.nodes'))
-  }, [posts, props])
+  }, [props])
+  // React.useEffect(() => {
+  //   setPosts(get(props, 'data.allContentfulBlogPost.nodes'))
+  // }, [props])
 
   // const find_by_id = (items, id) =>
   //   items.find((item) => items.contentful_id === `${id}`)
@@ -157,8 +157,11 @@ const RootIndex = (props) => {
             </StyledPaper>
             <Box sx={{ paddingTop: '0.5em' }}>
               <Swiper>
-                {galleryPage?.imageGallery.map(({ gatsbyImageData }) => (
-                  <SwiperSlide className={swiperCss}>
+                {galleryPage?.imageGallery.map(({ gatsbyImageData }, i) => (
+                  <SwiperSlide
+                    className={swiperCss}
+                    key={`${gatsbyImageData}-${i}`}
+                  >
                     <GatsbyImage
                       className={swiperCss}
                       alt={'title'}
@@ -232,10 +235,11 @@ const RootIndex = (props) => {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.9127764584164!2d-84.2532796844194!3d33.94337143090631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5a0b851aa6841%3A0x69061a48f35c748d!2sAtlantis%20Granite%20%26%20Marble%20LLC!5e0!3m2!1sen!2sus!4v1656432789418!5m2!1sen!2sus"
                 width="600"
                 height="450"
+                title="google-map"
                 style={{ border: '0' }}
-                allowfullscreen=""
+                // allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                // referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </Box>
           </Box>
