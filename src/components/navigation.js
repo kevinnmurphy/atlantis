@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import * as styles from './navigation.module.css'
-import logo from '../../content/images/logo_navy_transparent.png'
+import logo from '../../content/images/logo_navy_transparent.webp'
 
 import Box from '@mui/material/Box'
 
