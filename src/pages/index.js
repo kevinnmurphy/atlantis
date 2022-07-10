@@ -34,7 +34,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 
-import swiperCss from '../components/swiper.css'
+import '../components/swiper.css'
 
 import useOnScreen from '../hooks/useOnScreen'
 
@@ -159,12 +159,9 @@ const RootIndex = (props) => {
             <Box sx={{ paddingTop: '0.5em' }}>
               <Swiper>
                 {galleryPage?.imageGallery.map(({ gatsbyImageData }, i) => (
-                  <SwiperSlide
-                    className={swiperCss}
-                    key={`${gatsbyImageData}-${i}`}
-                  >
+                  <SwiperSlide key={`${gatsbyImageData}-${i}`}>
                     <GatsbyImage
-                      className="gatsby-image-wrapper-2"
+                      className="swiper-slide-image"
                       alt={'title'}
                       image={gatsbyImageData}
                     />
@@ -175,7 +172,15 @@ const RootIndex = (props) => {
           </Box>
         </SimpleGrow>
         <SimpleGrow>
-          <Box sx={{ paddingBottom: '3em' }}>
+          <Box
+            sx={{
+              padding: '2em 0 3em 0',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
             <h4 id="contact">Contact Us</h4>
             <ContactForm />
           </Box>
@@ -238,7 +243,6 @@ const RootIndex = (props) => {
                 height="450"
                 title="google-map"
                 style={{ border: '0' }}
-                // allowfullscreen=""
                 loading="lazy"
                 // referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
@@ -315,22 +319,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-// allContentfulPerson(
-//   filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
-// ) {
-//   nodes {
-//     name
-//     shortBio {
-//       shortBio
-//     }
-//     title
-//     heroImage: image {
-//       gatsbyImageData(
-//         layout: CONSTRAINED
-//         placeholder: BLURRED
-//         width: 1180
-//       )
-//     }
-//   }
-// }

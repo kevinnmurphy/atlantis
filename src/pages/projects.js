@@ -21,7 +21,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 
-import swiperCss from '../components/swiper.css'
+import '../components/swiper.css'
 
 const MasonryImageList = ({ itemData = [], galleryPage }) => {
   return (
@@ -138,12 +138,9 @@ const Projects = (props) => {
         <Box sx={{ paddingTop: '0.5em' }}>
           <Swiper>
             {galleryPage?.imageGallery.map(({ gatsbyImageData }, i) => (
-              <SwiperSlide
-                className={swiperCss}
-                key={`${gatsbyImageData}-${i}`}
-              >
+              <SwiperSlide key={`${gatsbyImageData}-${i}`}>
                 <GatsbyImage
-                  className="gatsby-image-wrapper-2"
+                  className="swiper-slide-image"
                   alt={'title'}
                   image={gatsbyImageData}
                 />

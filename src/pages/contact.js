@@ -38,7 +38,13 @@ const Contact = (props) => {
               __html: counterPage?.longText.childMarkdownRemark.html,
             }}
           />
-          <Box>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
             <ContactForm />
           </Box>
         </Box>

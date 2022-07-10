@@ -8,12 +8,14 @@ import NativeSelect from '@mui/material/NativeSelect'
 import Button from '@mui/material/Button'
 
 const Form = (props) => {
+  const handleSubmit = () => console.log('formData')
+
   return (
     <Box
       component="form"
       // noValidate
       autoComplete="off"
-      sx={{ minWidth: 120 }}
+      sx={{ minWidth: 120, maxWidth: 500 }}
     >
       <TextField
         required
@@ -65,7 +67,6 @@ const Form = (props) => {
           Do you have measurements?
         </InputLabel>
         <NativeSelect
-          defaultValue={10}
           inputProps={{
             name: 'measurements',
             id: 'measurements',
@@ -80,7 +81,6 @@ const Form = (props) => {
           Material of interest?
         </InputLabel>
         <NativeSelect
-          defaultValue={10}
           inputProps={{
             name: 'material',
             id: 'material',
@@ -105,7 +105,6 @@ const Form = (props) => {
           Do you need your current countertops removed and discarded?
         </InputLabel>
         <NativeSelect
-          defaultValue={10}
           inputProps={{
             name: 'demo',
             id: 'demo',
@@ -117,11 +116,12 @@ const Form = (props) => {
         </NativeSelect>
       </FormControl>
       <TextField
-        id="standard-required"
+        id="standard-multiline"
         label="Message"
         variant="standard"
         fullWidth
         multiline
+        rows={4}
       />
       <Box
         sx={{
@@ -131,7 +131,9 @@ const Form = (props) => {
           padding: '1em',
         }}
       >
-        <Button variant="contained">Submit</Button>
+        <Button variant="contained" onSubmit={handleSubmit}>
+          Submit
+        </Button>
       </Box>
     </Box>
   )
