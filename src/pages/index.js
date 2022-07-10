@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import Hero from '../components/hero'
 import Container from '../components/container'
 // import ArticlePreview from '../components/article-preview'
+import ContactForm from '../components/contactForm'
 
 import { GatsbyImage } from 'gatsby-plugin-image'
 
@@ -163,7 +164,7 @@ const RootIndex = (props) => {
                     key={`${gatsbyImageData}-${i}`}
                   >
                     <GatsbyImage
-                      className={swiperCss}
+                      className="gatsby-image-wrapper-2"
                       alt={'title'}
                       image={gatsbyImageData}
                     />
@@ -176,7 +177,7 @@ const RootIndex = (props) => {
         <SimpleGrow>
           <Box sx={{ paddingBottom: '3em' }}>
             <h4 id="contact">Contact Us</h4>
-            <h5>Fill out this form</h5>
+            <ContactForm />
           </Box>
         </SimpleGrow>
         <SimpleGrow>

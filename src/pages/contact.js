@@ -2,8 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 
-import Layout from '../components/layout'
 import Container from '../components/container'
+import Hero from '../components/hero'
+import Layout from '../components/layout'
+import ContactForm from '../components/contactForm'
 
 import Box from '@mui/material/Box'
 // import Divider from '@mui/material/Divider'
@@ -21,8 +23,13 @@ const Contact = (props) => {
 
   return (
     <Layout location={props.location}>
+      <Hero
+        content={counterPage?.subtext}
+        image={counterPage?.heroImage?.gatsbyImageData}
+        title={counterPage?.title}
+      />
       <Container>
-        <Box id="counters">
+        <Box id="counters" sx={{ minHeight: '50vh' }}>
           <h3>{counterPage?.title}</h3>
           <h4>{counterPage?.subtext}</h4>
           <div
@@ -31,13 +38,11 @@ const Contact = (props) => {
               __html: counterPage?.longText.childMarkdownRemark.html,
             }}
           />
+          <Box>
+            <ContactForm />
+          </Box>
         </Box>
-        <Box>FORM</Box>
-        <Box>IMAGE</Box>
-        <Box>{counterPage?.heroImage?.gatsbyImageData}</Box>
       </Container>
-
-      {/* <ArticlePreview posts={posts} /> */}
     </Layout>
   )
 }
@@ -46,7 +51,9 @@ export default Contact
 
 export const pageQuery = graphql`
   query ContactQuery {
-    allContentfulPage(filter: { contentful_id: {} }) {
+    allContentfulPage(
+      filter: { contentful_id: { eq: "68SLKJVNYY8AFWAeUqxTIl" } }
+    ) {
       nodes {
         contentful_id
         title
@@ -62,27 +69,6 @@ export const pageQuery = graphql`
             placeholder: BLURRED
             width: 1180
           )
-        }
-      }
-    }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
-      nodes {
-        title
-        slug
-        publishDate(formatString: "MMMM Do, YYYY")
-        tags
-        heroImage {
-          gatsbyImageData(
-            layout: FULL_WIDTH
-            placeholder: BLURRED
-            width: 424
-            height: 212
-          )
-        }
-        description {
-          childMarkdownRemark {
-            html
-          }
         }
       }
     }
