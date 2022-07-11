@@ -6,7 +6,8 @@ import Layout from '../components/layout'
 import Hero from '../components/hero'
 import Container from '../components/container'
 // import ArticlePreview from '../components/article-preview'
-import ContactForm from '../components/contactForm'
+// import ContactForm from '../components/ContactForm'
+import MyForm from '../components/MyForm'
 
 import { GatsbyImage } from 'gatsby-plugin-image'
 
@@ -182,7 +183,8 @@ const RootIndex = (props) => {
             }}
           >
             <h4 id="contact">Contact Us</h4>
-            <ContactForm />
+            {/* <ContactForm /> */}
+            <MyForm />
           </Box>
         </SimpleGrow>
         <SimpleGrow>

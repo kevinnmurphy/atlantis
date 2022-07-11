@@ -5,7 +5,8 @@ import get from 'lodash/get'
 import Container from '../components/container'
 import Hero from '../components/hero'
 import Layout from '../components/layout'
-import ContactForm from '../components/contactForm'
+// import ContactForm from '../components/ContactForm'
+import MyForm from '../components/MyForm'
 
 import Box from '@mui/material/Box'
 // import Divider from '@mui/material/Divider'
@@ -45,7 +46,8 @@ const Contact = (props) => {
               justifyContent: 'center',
             }}
           >
-            <ContactForm />
+            {/* <ContactForm /> */}
+            <MyForm />
           </Box>
         </Box>
       </Container>
