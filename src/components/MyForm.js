@@ -30,10 +30,13 @@ const MyForm = () => {
     e.preventDefault()
     const form = e.target
 
+    const GetFormId =
+      process.env.GATSBY_GETFORM_ID || process.env.REACT_APP_GETFORM_ID
+
     setServerState({ submitting: true })
     axios({
       method: 'post',
-      url: `https://getform.io/f/${process.env.REACT_APP_GETFORM_ID}`,
+      url: `https://getform.io/f/${GetFormId}`,
       data: new FormData(form),
     })
       .then((r) => {
