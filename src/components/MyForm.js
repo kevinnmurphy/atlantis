@@ -22,7 +22,7 @@ const MyForm = () => {
     })
     if (ok) {
       form.reset()
-      // alert('Thank you, we will respond to your inquiry shortly.')
+      alert('Thank you, we will respond to your inquiry shortly.')
     }
   }
 
@@ -33,7 +33,7 @@ const MyForm = () => {
     setServerState({ submitting: true })
     axios({
       method: 'post',
-      url: `https://getform.io/f/${process.env.GETFORM_ID}`,
+      url: `https://getform.io/f/${process.env.REACT_APP_GETFORM_ID}`,
       data: new FormData(form),
     })
       .then((r) => {

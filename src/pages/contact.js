@@ -16,7 +16,7 @@ const Contact = (props) => {
 
   React.useEffect(() => {
     setPages(get(props, 'data.allContentfulPage.nodes'))
-  }, [pages, props])
+  }, [props])
 
   const counterPage = pages.find(
     (page) => page.contentful_id === '68SLKJVNYY8AFWAeUqxTIl'

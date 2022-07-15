@@ -67,7 +67,7 @@ const RootIndex = (props) => {
   const [pages, setPages] = React.useState([])
   // const [posts, setPosts] = React.useState([])
   // const [author, setAuthor] = React.useState([])
-  console.log(pages)
+  // console.log(pages)
 
   React.useEffect(() => {
     setPages(get(props, 'data.allContentfulPage.nodes'))

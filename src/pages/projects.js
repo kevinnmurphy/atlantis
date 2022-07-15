@@ -21,10 +21,6 @@ import '../components/swiper.css'
 
 const Projects = (props) => {
   const [pages, setPages] = React.useState([])
-  // const galleryPage = pages.find(
-  //   (page) => page.contentful_id === '7m0mGy7D7ItzfZm3ooEAbQ'
-  // )
-  console.log(pages)
 
   React.useEffect(() => {
     setPages(get(props, 'data.allContentfulPage.nodes'))
